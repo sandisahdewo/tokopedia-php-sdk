@@ -1,5 +1,5 @@
 {
-	"name": "gandung/tokopedia-php-sdk",
+	"name": "sandi/tokopedia-php-sdk",
 	"type": "library",
 	"description": "PHP SDK for Tokopedia API.",
 	"license": "BSD-3-Clause",
