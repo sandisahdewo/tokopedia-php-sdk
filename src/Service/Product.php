@@ -292,6 +292,32 @@ class Product extends Resource
     }
 
     /**
+     * Create products v3
+     *
+     * @param int $shopID Shop ID.
+     * @param array $data
+     * @return string
+     */
+    public function createProductsV3(int $shopID, array $data)
+    {
+        $endpoint = sprintf(
+            '/v3/products/fs/%d/create',
+            $this->getFulfillmentServiceID()
+        );
+
+        $queryParams            = [];
+        $queryParams['shop_id'] = $shopID;
+
+        $response = $this->call(
+            'POST',
+            sprintf('%s?%s', $endpoint, http_build_query($queryParams)),
+            $data
+        );
+
+        return $this->getContents($response);
+    }
+
+    /**
      * Edit product.
      *
      * @param int $shopID Shop ID.
@@ -302,6 +328,32 @@ class Product extends Resource
     {
         $endpoint = sprintf(
             '/v2/products/fs/%d/edit',
+            $this->getFulfillmentServiceID()
+        );
+
+        $queryParams            = [];
+        $queryParams['shop_id'] = $shopID;
+
+        $response = $this->call(
+            'PATCH',
+            sprintf('%s?%s', $endpoint, http_build_query($queryParams)),
+            $data
+        );
+
+        return $this->getContents($response);
+    }
+
+    /**
+     * Edit product v3.
+     *
+     * @param int $shopID Shop ID.
+     * @param array $data
+     * @return string
+     */
+    public function editProductV3(int $shopID, array $data)
+    {
+        $endpoint = sprintf(
+            '/v3/products/fs/%d/edit',
             $this->getFulfillmentServiceID()
         );
 
